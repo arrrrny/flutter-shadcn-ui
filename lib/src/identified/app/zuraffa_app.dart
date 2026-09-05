@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zuraffa_ui/src/app.dart';
 import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/identified/theme/zfa_theme.dart';
 import 'package:zuraffa_ui/src/theme/data.dart';
 
 /// The certified app shell of the skin lane.
@@ -70,10 +71,10 @@ class ZuraffaApp extends StatefulWidget with ZfaContract {
   /// The title of the app.
   final String title;
 
-  /// The light [ShadThemeData] of the app.
+  /// The light [ZfaThemeData] of the app.
   final ShadThemeData? theme;
 
-  /// The dark [ShadThemeData] of the app.
+  /// The dark [ZfaThemeData] of the app.
   final ShadThemeData? darkTheme;
 
   /// The theme mode of the app.
