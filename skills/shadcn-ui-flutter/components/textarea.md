@@ -41,7 +41,7 @@ ShadTextareaFormField(
 import 'package:example/common/base_scaffold.dart';
 import 'package:example/common/properties/bool_property.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:zuraffa_ui/shad.dart';
 
 class TextareaPage extends StatefulWidget {
   const TextareaPage({super.key});
@@ -95,7 +95,7 @@ import 'package:example/common/properties/bool_property.dart';
 import 'package:example/common/properties/enum_property.dart';
 import 'package:example/common/properties/string_property.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:zuraffa_ui/shad.dart';
 
 class TextareaFormFieldPage extends StatefulWidget {
   const TextareaFormFieldPage({super.key});
