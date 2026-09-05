@@ -76,7 +76,7 @@ class TabsExample extends StatelessWidget {
 ```dart
 import 'package:example/common/base_scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:zuraffa_ui/shad.dart';
 
 class TabsPage extends StatelessWidget {
   const TabsPage({super.key});
