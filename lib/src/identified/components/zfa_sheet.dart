@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../components/sheet.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/components/sheet.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
 
 /// The certified sheet of the skin lane.
 ///
@@ -40,7 +40,7 @@ class ZfaSheet extends StatelessWidget with ZfaContract {
   final List<Widget> actions;
 
   @override
-  final String contractId = 'zfa.sheet';
+  String get contractId => 'zfa.sheet';
 
   @override
   final bool contractEnabled;
@@ -58,8 +58,8 @@ class ZfaSheet extends StatelessWidget with ZfaContract {
       builder: (_) => ZfaSheet(
         title: title,
         description: description,
-        child: child,
         actions: actions,
+        child: child,
       ),
     );
   }
@@ -69,8 +69,8 @@ class ZfaSheet extends StatelessWidget with ZfaContract {
     return ShadSheet(
       title: title,
       description: description,
-      child: child,
       actions: actions,
+      child: child,
     );
   }
 }

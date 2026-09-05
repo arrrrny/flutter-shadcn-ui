@@ -23,15 +23,20 @@ void main() {
       );
       expect(bus.violations, hasLength(1));
       expect(bus.violations.first.code, 'route.unidentified');
-      expect(bus.violations.first.message,
-          'Route pushed without contract identity');
+      expect(
+        bus.violations.first.message,
+        'Route pushed without contract identity',
+      );
       expect(bus.violations.first.timestamp, isNotNull);
       expect(notifications, 1);
 
-      expect(() => bus.violations.add(
-            ZfaContractViolation(code: 'x', message: 'y'),
-          ), throwsUnsupportedError,
-          reason: 'the violation history must be unmodifiable');
+      expect(
+        () => bus.violations.add(
+          ZfaContractViolation(code: 'x', message: 'y'),
+        ),
+        throwsUnsupportedError,
+        reason: 'the violation history must be unmodifiable',
+      );
 
       bus.clear();
       expect(bus.violations, isEmpty);
@@ -79,20 +84,25 @@ void main() {
 
   group('kit registry and keys', () {
     test('certified ids cover the identified vocabulary', () {
-      expect(SkinContractKit.certifiedIds, containsAll(<String>[
-        'zfa.app',
-        'zfa.button',
-        'zfa.input',
-        'zfa.card',
-        'zfa.sheet',
-        'zfa.dialog',
-        'zfa.toaster',
-      ]));
+      expect(
+        SkinContractKit.certifiedIds,
+        containsAll(<String>[
+          'zfa.app',
+          'zfa.button',
+          'zfa.input',
+          'zfa.card',
+          'zfa.sheet',
+          'zfa.dialog',
+          'zfa.toaster',
+        ]),
+      );
     });
 
     test('parses the pilot zfa: key convention', () {
-      expect(SkinContractKit.contractIdOf(const ValueKey<String>('zfa:button')),
-          'zfa.button');
+      expect(
+        SkinContractKit.contractIdOf(const ValueKey<String>('zfa:button')),
+        'zfa.button',
+      );
       expect(
         SkinContractKit.contractIdOf(
           const ValueKey<String>('zfa:button#login'),
@@ -100,8 +110,10 @@ void main() {
         'zfa.button',
         reason: 'fragment after # is per-instance, not part of the id',
       );
-      expect(SkinContractKit.contractIdOf(const ValueKey<String>('other:1')),
-          isNull);
+      expect(
+        SkinContractKit.contractIdOf(const ValueKey<String>('other:1')),
+        isNull,
+      );
       expect(SkinContractKit.contractIdOf(null), isNull);
     });
 
@@ -131,10 +143,10 @@ class _Probe extends StatelessWidget with ZfaContract {
   const _Probe();
 
   @override
-  final String contractId = 'zfa.probe';
+  String get contractId => 'zfa.probe';
 
   @override
-  final bool contractEnabled = true;
+  bool get contractEnabled => true;
 
   @override
   Widget build(BuildContext context) => const SizedBox();

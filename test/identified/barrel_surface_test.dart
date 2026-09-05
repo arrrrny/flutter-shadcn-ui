@@ -12,7 +12,9 @@ import 'package:zuraffa_ui/zuraffa_ui.dart' as zfa;
 //
 // The import hygiene scan builds its needle from fragments so this file never
 // contains the literal it is scanning for.
-const String _needle = 'package:shadcn_' 'ui/';
+const String _needle =
+    'package:shadcn_'
+    'ui/';
 
 void main() {
   group('package identity', () {
@@ -20,12 +22,14 @@ void main() {
     final changelog = File('CHANGELOG.md').readAsStringSync();
 
     test('pubspec declares zuraffa_ui at 0.1.0', () {
-      final name = RegExp(r'^name:\s*(\S+)', multiLine: true)
-          .firstMatch(pubspec)
-          ?.group(1);
-      final version = RegExp(r'^version:\s*(\S+)', multiLine: true)
-          .firstMatch(pubspec)
-          ?.group(1);
+      final name = RegExp(
+        r'^name:\s*(\S+)',
+        multiLine: true,
+      ).firstMatch(pubspec)?.group(1);
+      final version = RegExp(
+        r'^version:\s*(\S+)',
+        multiLine: true,
+      ).firstMatch(pubspec)?.group(1);
       expect(name, 'zuraffa_ui', reason: 'pubspec name must be zuraffa_ui');
       expect(
         version,
@@ -35,32 +39,50 @@ void main() {
     });
 
     test('raw engine library is lib/shad.dart, not lib/shadcn_ui.dart', () {
-      expect(File('lib/shad.dart').existsSync(), isTrue,
-          reason: 'raw Shad* engine must live at lib/shad.dart');
-      expect(File('lib/shadcn_ui.dart').existsSync(), isFalse,
-          reason: 'the upstream barrel path must be gone');
-      expect(File('lib/zuraffa_ui.dart').existsSync(), isTrue,
-          reason: 'the package barrel must be lib/zuraffa_ui.dart');
+      expect(
+        File('lib/shad.dart').existsSync(),
+        isTrue,
+        reason: 'raw Shad* engine must live at lib/shad.dart',
+      );
+      expect(
+        File('lib/shadcn_ui.dart').existsSync(),
+        isFalse,
+        reason: 'the upstream barrel path must be gone',
+      );
+      expect(
+        File('lib/zuraffa_ui.dart').existsSync(),
+        isTrue,
+        reason: 'the package barrel must be lib/zuraffa_ui.dart',
+      );
     });
 
     test('CHANGELOG records base fork SHA and upstream version', () {
-      expect(changelog, contains('afc9569'),
-          reason: 'the base fork SHA of this repackage must be recorded');
-      expect(changelog, contains('0.56.3'),
-          reason: 'the upstream shadcn_ui version must be recorded');
+      expect(
+        changelog,
+        contains('afc9569'),
+        reason: 'the base fork SHA of this repackage must be recorded',
+      );
+      expect(
+        changelog,
+        contains('0.56.3'),
+        reason: 'the upstream shadcn_ui version must be recorded',
+      );
     });
   });
 
   group('barrel surface', () {
     final barrel = File('lib/zuraffa_ui.dart').readAsStringSync();
-    final exports = RegExp(r"^export\s+'([^']+)'", multiLine: true)
-        .allMatches(barrel)
-        .map((m) => m.group(1)!)
-        .toList();
+    final exports = RegExp(
+      r"^export\s+'([^']+)'",
+      multiLine: true,
+    ).allMatches(barrel).map((m) => m.group(1)!).toList();
 
     test('barrel exists and exports only the identified layer', () {
-      expect(exports, isNotEmpty,
-          reason: 'the package barrel must export something');
+      expect(
+        exports,
+        isNotEmpty,
+        reason: 'the package barrel must export something',
+      );
       for (final path in exports) {
         expect(
           path,
@@ -84,7 +106,7 @@ void main() {
       // Compile-time proof that every certified name resolves through
       // package:zuraffa_ui/zuraffa_ui.dart. If any name is missing from the
       // barrel the test file itself does not compile.
-      final List<Type> vocabulary = [
+      final vocabulary = <Type>[
         zfa.ZuraffaApp,
         zfa.ZfaButton,
         zfa.ZfaInput,
@@ -102,7 +124,7 @@ void main() {
       ];
       expect(vocabulary, hasLength(14));
       // And the contract protocol is typed on the certified names.
-      const zfa.ZfaButton button = zfa.ZfaButton();
+      const button = zfa.ZfaButton();
       expect(button.contractId, 'zfa.button');
       expect(button.contractEnabled, isTrue);
     });

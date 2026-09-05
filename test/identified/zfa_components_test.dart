@@ -10,13 +10,16 @@ import 'package:zuraffa_ui/zuraffa_ui.dart';
 // the red the pilot's duck-typed auditor probes were working around.
 
 Widget wrap(Widget child) {
-  return ZuraffaApp(home: Scaffold(body: Center(child: child)));
+  return ZuraffaApp(
+    home: Scaffold(body: Center(child: child)),
+  );
 }
 
 void main() {
   group('ZfaButton', () {
-    testWidgets('contract: id zfa.button, enabled by default, disableable',
-        (tester) async {
+    testWidgets('contract: id zfa.button, enabled by default, disableable', (
+      tester,
+    ) async {
       const button = ZfaButton();
       expect(button.contractId, 'zfa.button');
       expect(button.contractEnabled, isTrue);
@@ -25,8 +28,9 @@ void main() {
       expect(off.contractEnabled, isFalse);
     });
 
-    testWidgets('forwards onPressed and taps reach the handler',
-        (tester) async {
+    testWidgets('forwards onPressed and taps reach the handler', (
+      tester,
+    ) async {
       var pressed = 0;
       await tester.pumpWidget(
         wrap(
@@ -41,8 +45,9 @@ void main() {
       expect(pressed, 1);
     });
 
-    testWidgets('renders the ShadButton engine widget beneath it',
-        (tester) async {
+    testWidgets('renders the ShadButton engine widget beneath it', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         wrap(const ZfaButton(child: Text('engine beneath'))),
       );
@@ -60,8 +65,9 @@ void main() {
       expect(const ZfaInput(contractEnabled: false).contractEnabled, isFalse);
     });
 
-    testWidgets('forwards controller and onChanged; typing notifies',
-        (tester) async {
+    testWidgets('forwards controller and onChanged; typing notifies', (
+      tester,
+    ) async {
       final controller = TextEditingController();
       var changed = '';
       await tester.pumpWidget(
@@ -81,8 +87,9 @@ void main() {
   });
 
   group('ZfaCard', () {
-    testWidgets('contract: id zfa.card, renders title/description/child',
-        (tester) async {
+    testWidgets('contract: id zfa.card, renders title/description/child', (
+      tester,
+    ) async {
       const card = ZfaCard();
       expect(card.contractId, 'zfa.card');
       expect(card.contractEnabled, isTrue);
@@ -110,13 +117,14 @@ void main() {
       expect(sheet.contractEnabled, isTrue);
     });
 
-    testWidgets('show wraps showShadSheet and renders the sheet',
-        (tester) async {
+    testWidgets('show wraps showShadSheet and renders the sheet', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         wrap(
           ZfaButton(
             child: const Text('open sheet'),
-            onPressed: () => ZfaSheet.show(
+            onPressed: () => ZfaSheet.show<void>(
               tester.element(find.byType(ZfaButton)),
               title: const Text('sheet title'),
               child: const Text('sheet body'),
@@ -138,13 +146,14 @@ void main() {
       expect(dialog.contractEnabled, isTrue);
     });
 
-    testWidgets('show wraps showShadDialog and renders the dialog',
-        (tester) async {
+    testWidgets('show wraps showShadDialog and renders the dialog', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         wrap(
           ZfaButton(
             child: const Text('open dialog'),
-            onPressed: () => ZfaDialog.show(
+            onPressed: () => ZfaDialog.show<void>(
               tester.element(find.byType(ZfaButton)),
               title: const Text('dialog title'),
               child: const Text('dialog body'),
@@ -160,8 +169,9 @@ void main() {
   });
 
   group('ZfaToaster', () {
-    testWidgets('contract: id zfa.toaster, toasts shown through it appear',
-        (tester) async {
+    testWidgets('contract: id zfa.toaster, toasts shown through it appear', (
+      tester,
+    ) async {
       const toaster = ZfaToaster(child: SizedBox());
       expect(toaster.contractId, 'zfa.toaster');
       expect(toaster.contractEnabled, isTrue);
@@ -187,8 +197,11 @@ void main() {
       expect(find.text('zfa toast fired'), findsOneWidget);
       await tester.pump(const Duration(seconds: 6));
       await tester.pump(const Duration(milliseconds: 400));
-      expect(find.text('zfa toast fired'), findsNothing,
-          reason: 'the toaster must honor the default toast duration');
+      expect(
+        find.text('zfa toast fired'),
+        findsNothing,
+        reason: 'the toaster must honor the default toast duration',
+      );
     });
   });
 

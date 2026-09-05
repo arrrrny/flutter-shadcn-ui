@@ -1,14 +1,13 @@
 import 'package:flutter/widgets.dart';
-
-import '../../components/toast.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/components/toast.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
 
 /// The certified toaster of the skin lane.
 ///
 /// Wraps [ShadToaster] with the typed contract protocol
 /// (`contractId == 'zfa.toaster'`, [contractEnabled]).
 ///
-/// [ZuraffaApp] already mounts a toaster through the engine's app shell, so
+/// ZuraffaApp already mounts a toaster through the engine's app shell, so
 /// most skins never construct this directly. Mount it yourself only when you
 /// build a custom app shell: place it in your app's `builder`, exactly where
 /// the engine places it.
@@ -31,7 +30,7 @@ class ZfaToaster extends StatelessWidget with ZfaContract {
   final Widget child;
 
   @override
-  final String contractId = 'zfa.toaster';
+  String get contractId => 'zfa.toaster';
 
   @override
   final bool contractEnabled;

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../components/input.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/components/input.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
 
 /// The certified text input of the skin lane.
 ///
@@ -67,7 +67,7 @@ class ZfaInput extends StatelessWidget with ZfaContract {
   final FocusNode? focusNode;
 
   @override
-  final String contractId = 'zfa.input';
+  String get contractId => 'zfa.input';
 
   @override
   final bool contractEnabled;
@@ -77,8 +77,9 @@ class ZfaInput extends StatelessWidget with ZfaContract {
     return ShadInput(
       controller: controller,
       initialValue: initialValue,
-      placeholder:
-          placeholder == null ? null : Text(placeholder!, key: const Key('zfa.input.placeholder')),
+      placeholder: placeholder == null
+          ? null
+          : Text(placeholder!, key: const Key('zfa.input.placeholder')),
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       enabled: enabled,

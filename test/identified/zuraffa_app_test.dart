@@ -37,11 +37,14 @@ void main() {
         find.textContaining('Zfa contract violation'),
         findsWidgets,
         reason:
-            'an unnamed route push must surface the violation chrome by default',
+            'an unnamed route push must surface the '
+            'violation chrome by default',
       );
     });
 
-    testWidgets('pushing a route with a contract name is clean', (tester) async {
+    testWidgets('pushing a route with a contract name is clean', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         ZuraffaApp(
           home: Scaffold(
@@ -91,18 +94,24 @@ void main() {
       );
       await tester.pump();
       expect(find.textContaining('Zfa contract violation'), findsWidgets);
-      expect(find.textContaining('Route pushed without contract identity'),
-          findsWidgets);
+      expect(
+        find.textContaining('Route pushed without contract identity'),
+        findsWidgets,
+      );
 
       bus.clear();
       await tester.pump();
       expect(find.textContaining('Zfa contract violation'), findsNothing);
-      expect(find.text('home content'), findsOneWidget,
-          reason: 'the navigator beneath the chrome must stay intact');
+      expect(
+        find.text('home content'),
+        findsOneWidget,
+        reason: 'the navigator beneath the chrome must stay intact',
+      );
     });
 
-    testWidgets('chrome can be disabled while the observer keeps recording',
-        (tester) async {
+    testWidgets('chrome can be disabled while the observer keeps recording', (
+      tester,
+    ) async {
       final bus = ZfaAuditBus();
       await tester.pumpWidget(
         ZuraffaApp(
@@ -118,18 +127,24 @@ void main() {
         ),
       );
       await tester.pump();
-      expect(find.textContaining('Zfa contract violation'), findsNothing,
-          reason: 'showViolationChrome: false must hide the banner');
-      expect(bus.violations, hasLength(1),
-          reason: 'the audit bus still records when chrome is off');
+      expect(
+        find.textContaining('Zfa contract violation'),
+        findsNothing,
+        reason: 'showViolationChrome: false must hide the banner',
+      );
+      expect(
+        bus.violations,
+        hasLength(1),
+        reason: 'the audit bus still records when chrome is off',
+      );
     });
   });
 
   group('wraps ShadApp', () {
     testWidgets('mounts the theme so ZfaTheme.of resolves', (tester) async {
       await tester.pumpWidget(
-        ZuraffaApp(
-          home: const Scaffold(body: Text('themed home')),
+        const ZuraffaApp(
+          home: Scaffold(body: Text('themed home')),
         ),
       );
       expect(find.text('themed home'), findsOneWidget);
@@ -146,13 +161,14 @@ void main() {
       expect(find.text('user builder ran'), findsOneWidget);
     });
 
-    testWidgets('user navigator observers are merged with the contract one',
-        (tester) async {
+    testWidgets('user navigator observers are merged with the contract one', (
+      tester,
+    ) async {
       final seen = <String>[];
       await tester.pumpWidget(
         ZuraffaApp(
           navigatorObservers: [
-            _RecordingObserver(onPush: (name) => seen.add(name)),
+            _RecordingObserver(onPush: seen.add),
           ],
           home: Scaffold(
             body: Builder(

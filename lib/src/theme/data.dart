@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:theme_extensions_builder_annotation/theme_extensions_builder_annotation.dart';
 import 'package:zuraffa_ui/src/theme/color_scheme/base.dart';
 import 'package:zuraffa_ui/src/theme/color_scheme/slate.dart';
 import 'package:zuraffa_ui/src/theme/components/accordion.dart';
@@ -42,7 +43,6 @@ import 'package:zuraffa_ui/src/theme/themes/default_theme_no_secondary_border_va
 import 'package:zuraffa_ui/src/theme/themes/default_theme_variant.dart';
 import 'package:zuraffa_ui/src/utils/gesture_detector.dart';
 import 'package:zuraffa_ui/src/utils/responsive.dart';
-import 'package:theme_extensions_builder_annotation/theme_extensions_builder_annotation.dart';
 
 part 'data.g.theme.dart';
 

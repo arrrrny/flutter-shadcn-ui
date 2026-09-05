@@ -11,8 +11,7 @@ import 'package:zuraffa_ui/zuraffa_ui.dart';
 
 void main() {
   group('aliases', () {
-    testWidgets('ZfaTheme.of resolves the mounted ShadTheme',
-        (tester) async {
+    testWidgets('ZfaTheme.of resolves the mounted ShadTheme', (tester) async {
       ShadThemeData? resolvedFromZfa;
       ShadThemeData? resolvedFromEngine;
       Brightness? brightness;
@@ -34,8 +33,11 @@ void main() {
       expect(find.text('theme probe'), findsOneWidget);
       expect(resolvedFromZfa, isNotNull);
       expect(resolvedFromEngine, isNotNull);
-      expect(identical(resolvedFromZfa, resolvedFromEngine), isTrue,
-          reason: 'ZfaTheme.of and ShadTheme.of resolve the same data');
+      expect(
+        identical(resolvedFromZfa, resolvedFromEngine),
+        isTrue,
+        reason: 'ZfaTheme.of and ShadTheme.of resolve the same data',
+      );
       expect(brightness, Brightness.dark);
     });
 
@@ -46,8 +48,11 @@ void main() {
       final light = ZfaThemeData();
       expect(dark.brightness, Brightness.dark);
       expect(light.brightness, Brightness.light);
-      expect(dark, isA<ShadThemeData>(),
-          reason: 'the alias is the engine type, not a copy');
+      expect(
+        dark,
+        isA<ShadThemeData>(),
+        reason: 'the alias is the engine type, not a copy',
+      );
     });
   });
 }

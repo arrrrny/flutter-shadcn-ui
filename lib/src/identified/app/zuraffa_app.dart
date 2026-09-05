@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../app.dart';
-import '../../theme/data.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/app.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/theme/data.dart';
 
 /// The certified app shell of the skin lane.
 ///
@@ -108,7 +107,7 @@ class ZuraffaApp extends StatefulWidget with ZfaContract {
   final ZfaAuditBus? auditBus;
 
   @override
-  final String contractId = 'zfa.app';
+  String get contractId => 'zfa.app';
 
   @override
   final bool contractEnabled;
@@ -119,15 +118,9 @@ class ZuraffaApp extends StatefulWidget with ZfaContract {
 
 class _ZuraffaAppState extends State<ZuraffaApp> {
   ZfaAuditBus? _createdBus;
-  ZuraffaRouteObserver? _observer;
+  late final ZuraffaRouteObserver _observer = ZuraffaRouteObserver(bus: _bus);
 
   ZfaAuditBus get _bus => widget.auditBus ?? (_createdBus ??= ZfaAuditBus());
-
-  @override
-  void initState() {
-    super.initState();
-    _observer = ZuraffaRouteObserver(bus: _bus);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +138,7 @@ class _ZuraffaAppState extends State<ZuraffaApp> {
       locale: widget.locale,
       supportedLocales: widget.supportedLocales,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
-      navigatorObservers: [...widget.navigatorObservers, _observer!],
+      navigatorObservers: [...widget.navigatorObservers, _observer],
       builder: (context, child) {
         final inner = widget.builder?.call(context, child) ?? child;
         return ZfaViolationChrome(

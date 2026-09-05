@@ -1,5 +1,5 @@
-import '../../theme/data.dart';
-import '../../theme/theme.dart';
+import 'package:zuraffa_ui/src/theme/data.dart';
+import 'package:zuraffa_ui/src/theme/theme.dart';
 
 /// The theme alias of the skin lane.
 ///

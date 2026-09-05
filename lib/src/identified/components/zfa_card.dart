@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../components/card.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/components/card.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
 
 /// The certified card of the skin lane.
 ///
@@ -47,7 +47,7 @@ class ZfaCard extends StatelessWidget with ZfaContract {
   final Widget? trailing;
 
   @override
-  final String contractId = 'zfa.card';
+  String get contractId => 'zfa.card';
 
   @override
   final bool contractEnabled;
@@ -57,10 +57,10 @@ class ZfaCard extends StatelessWidget with ZfaContract {
     return ShadCard(
       title: title,
       description: description,
-      child: child,
       footer: footer,
       leading: leading,
       trailing: trailing,
+      child: child,
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../components/button.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/components/button.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
 
 /// The certified button of the skin lane.
 ///
@@ -61,7 +61,7 @@ class ZfaButton extends StatelessWidget with ZfaContract {
   final double? height;
 
   @override
-  final String contractId = 'zfa.button';
+  String get contractId => 'zfa.button';
 
   @override
   final bool contractEnabled;
@@ -70,7 +70,6 @@ class ZfaButton extends StatelessWidget with ZfaContract {
   Widget build(BuildContext context) {
     return ShadButton(
       onPressed: onPressed,
-      child: child,
       leading: leading,
       trailing: trailing,
       enabled: enabled,
@@ -78,6 +77,7 @@ class ZfaButton extends StatelessWidget with ZfaContract {
       focusNode: focusNode,
       width: width,
       height: height,
+      child: child,
     );
   }
 }

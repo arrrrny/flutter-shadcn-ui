@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../components/dialog.dart';
-import '../contract/skin_contract_kit.dart';
+import 'package:zuraffa_ui/src/components/dialog.dart';
+import 'package:zuraffa_ui/src/identified/contract/skin_contract_kit.dart';
 
 /// The certified dialog of the skin lane.
 ///
@@ -40,7 +40,7 @@ class ZfaDialog extends StatelessWidget with ZfaContract {
   final List<Widget> actions;
 
   @override
-  final String contractId = 'zfa.dialog';
+  String get contractId => 'zfa.dialog';
 
   @override
   final bool contractEnabled;
@@ -58,8 +58,8 @@ class ZfaDialog extends StatelessWidget with ZfaContract {
       builder: (_) => ZfaDialog(
         title: title,
         description: description,
-        child: child,
         actions: actions,
+        child: child,
       ),
     );
   }
@@ -69,8 +69,8 @@ class ZfaDialog extends StatelessWidget with ZfaContract {
     return ShadDialog(
       title: title,
       description: description,
-      child: child,
       actions: actions,
+      child: child,
     );
   }
 }

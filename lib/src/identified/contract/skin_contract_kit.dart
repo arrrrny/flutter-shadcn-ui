@@ -51,7 +51,7 @@ class ZfaContractViolation {
 ///
 /// The route-contract observer reports into it, the violation chrome listens
 /// to it, and skins may report their own violations through it. One bus is
-/// mounted per [ZuraffaApp] and shared by everything the app shell wires up.
+/// mounted per ZuraffaApp and shared by everything the app shell wires up.
 class ZfaAuditBus extends ChangeNotifier {
   final List<ZfaContractViolation> _violations = [];
 
@@ -71,9 +71,9 @@ class ZfaAuditBus extends ChangeNotifier {
   }
 }
 
-/// The route-contract observer mounted by [ZuraffaApp] by default.
+/// The route-contract observer mounted by ZuraffaApp by default.
 ///
-/// A route pushed without contract identity — no [RouteSettings.name] —
+/// A route pushed without contract identity — no RouteSettings.name —
 /// violates the skin contract and is reported to the audit bus as a
 /// `route.unidentified` violation. Named pushes are contract-clean.
 class ZuraffaRouteObserver extends NavigatorObserver {
@@ -116,7 +116,7 @@ class ZuraffaRouteObserver extends NavigatorObserver {
 /// Promoted from the 006-login-skin pilot (#1102), where the auditor kit,
 /// the observer wiring and the violation banner were assembled by hand in
 /// every skin's `main_skin.dart`. Skins that need manual control can build
-/// their own kit; skins that mount [ZuraffaApp] get one by default.
+/// their own kit; skins that mount ZuraffaApp get one by default.
 class SkinContractKit {
   /// Creates a kit owning a fresh bus, or reusing [bus].
   SkinContractKit({ZfaAuditBus? bus}) : bus = bus ?? ZfaAuditBus();

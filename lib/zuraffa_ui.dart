@@ -1,8 +1,8 @@
 /// The zuraffa_ui package barrel: the skin lane's certified vocabulary.
 ///
 /// Only identified `Zfa*` names are exported here — the app shell
-/// ([ZuraffaApp]), the certified components, the theme aliases
-/// ([ZfaTheme]/[ZfaThemeData]) and the contract kit. Raw `Shad*` engine names
+/// (ZuraffaApp), the certified components, the theme aliases
+/// (ZfaTheme/ZfaThemeData) and the contract kit. Raw `Shad*` engine names
 /// are internal: they are reachable through the engine library
 /// `package:zuraffa_ui/shad.dart`, never through this barrel. Skins import
 /// only this file.

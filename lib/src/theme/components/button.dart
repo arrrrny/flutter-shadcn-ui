@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:theme_extensions_builder_annotation/theme_extensions_builder_annotation.dart';
 import 'package:zuraffa_ui/src/components/button.dart';
 import 'package:zuraffa_ui/src/theme/components/button_sizes.dart';
 import 'package:zuraffa_ui/src/theme/components/decorator.dart';
 import 'package:zuraffa_ui/src/utils/gesture_detector.dart';
-import 'package:theme_extensions_builder_annotation/theme_extensions_builder_annotation.dart';
 
 part 'button.g.theme.dart';
 
