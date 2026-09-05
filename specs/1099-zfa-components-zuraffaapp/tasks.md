@@ -55,3 +55,23 @@
       mutants on high-risk behaviors (restored + suite re-run green), write
       `tdd/verification.md` with verdict, findings, remediation.
 - [x] T23: Push branch, open PR to master, `Closes #1099`.
+
+## Phase 6: TDD remediation
+
+From `tdd/verification.md` (verdict PASS_WITH_GAPS, audited at `e3e1784`).
+Ordered by severity; none block the PR.
+
+- [ ] T24 (finding 1, MED): Make `ZfaToaster`'s wrap behavior actually tested:
+      pump `ZfaToaster` inside a `ShadApp` builder and show a toast through
+      its scope, so `build -> ShadToaster` is covered (today 1/4 lines).
+      Proves done: `flutter test test/identified` green with
+      `zfa_toaster.dart` coverage > 80% in `coverage/lcov.info`.
+- [ ] T25 (finding 2, LOW): Cover the `ZuraffaRouteObserver.didReplace`
+      reporting branch and `ZfaContractViolation.toString` in
+      `test/identified/skin_contract_kit_test.dart` (28/32 today).
+      Proves done: `flutter test test/identified/skin_contract_kit_test.dart`
+      green with `skin_contract_kit.dart` coverage > 95%.
+- [ ] T26 (finding 3, LOW): Cover the no-ambient-Directionality fallback of
+      the violation banner (pump the chrome outside an app).
+      Proves done: `flutter test test/identified/zuraffa_app_test.dart` green
+      with `zuraffa_app.dart` coverage = 100%.

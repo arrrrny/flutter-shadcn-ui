@@ -4,8 +4,9 @@ loop: outside-in
 profile: .specify/memory/tdd-profile.md
 spec_criteria: 8
 planned_at: afc9569
-updated_at: afc9569
+updated_at: e3e1784
 suite_baseline: green
+suite_final: 369 passed (333 carried over + 36 identified)
 ---
 
 # Test List: zuraffa_ui — identified Zfa components + ZuraffaApp
