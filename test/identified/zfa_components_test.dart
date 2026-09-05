@@ -117,7 +117,7 @@ void main() {
           ZfaButton(
             child: const Text('open sheet'),
             onPressed: () => ZfaSheet.show(
-              tester.state(find.byType(ZfaButton)).context,
+              tester.element(find.byType(ZfaButton)),
               title: const Text('sheet title'),
               child: const Text('sheet body'),
             ),
@@ -145,7 +145,7 @@ void main() {
           ZfaButton(
             child: const Text('open dialog'),
             onPressed: () => ZfaDialog.show(
-              tester.state(find.byType(ZfaButton)).context,
+              tester.element(find.byType(ZfaButton)),
               title: const Text('dialog title'),
               child: const Text('dialog body'),
             ),
@@ -181,8 +181,14 @@ void main() {
         ),
       );
       await tester.tap(find.text('fire toast'));
-      await tester.pumpAndSettle();
+      // The toast auto-dismisses after 5s (kDefaultToastDuration), so we pump a
+      // fixed slice instead of settling through the dismissal.
+      await tester.pump(const Duration(milliseconds: 400));
       expect(find.text('zfa toast fired'), findsOneWidget);
+      await tester.pump(const Duration(seconds: 6));
+      await tester.pump(const Duration(milliseconds: 400));
+      expect(find.text('zfa toast fired'), findsNothing,
+          reason: 'the toaster must honor the default toast duration');
     });
   });
 

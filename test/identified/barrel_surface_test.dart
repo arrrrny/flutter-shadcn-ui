@@ -53,7 +53,7 @@ void main() {
 
   group('barrel surface', () {
     final barrel = File('lib/zuraffa_ui.dart').readAsStringSync();
-    final exports = RegExp(r"^export\s+'([^']+)';", multiLine: true)
+    final exports = RegExp(r"^export\s+'([^']+)'", multiLine: true)
         .allMatches(barrel)
         .map((m) => m.group(1)!)
         .toList();

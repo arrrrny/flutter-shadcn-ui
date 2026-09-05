@@ -1,3 +1,25 @@
+## 0.1.0
+
+End-to-end repackage of the shadcn_ui fork as `zuraffa_ui` (spec #1099) — the
+skin lane's certified vocabulary.
+
+- **Base fork SHA**: `afc95690e53629324ddbf094ca78021f56848bd4` (arrrrny/zuraffa-ui)
+- **Upstream**: nank1ro/flutter-shadcn-ui, `shadcn_ui` 0.56.3
+- Package renamed `shadcn_ui` → `zuraffa_ui` (pubspec, barrel, package URIs);
+  version reset to `0.1.0` — zuraffa_ui owns its own semver timeline, breaking
+  shadcn upstream bumps become internal fixes.
+- Raw `Shad*` engine moved to `lib/shad.dart` (internal library, content
+  unchanged); `lib/zuraffa_ui.dart` is the package barrel exporting the
+  identified surface only.
+- New `lib/src/identified/` layer (isolated from upstream merges):
+  `ZuraffaApp` (route-contract observer + audit bus + violation chrome mounted
+  by default), `ZfaButton`, `ZfaInput`, `ZfaCard`, `ZfaSheet`, `ZfaToaster`,
+  `ZfaDialog` — each carrying the typed contract protocol
+  (`contractId`/`contractEnabled`) — plus `ZfaTheme`/`ZfaThemeData` aliases
+  and the `SkinContractKit` promoted from the 006 pilot (#1102).
+- The fork's component tests carried over (import URIs rewritten) and extended
+  with identification + contract-kit tests in `test/identified/`.
+
 ## 0.56.3
 
 - **FIX**: Hide a `ShadTooltip` shown by a tap when another page or dialog opens on top of it, so it is not shown again once that page or dialog is dismissed.

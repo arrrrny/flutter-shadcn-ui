@@ -16,7 +16,7 @@ void main() {
       expect(bus.violations, isEmpty);
 
       bus.report(
-        const ZfaContractViolation(
+        ZfaContractViolation(
           code: 'route.unidentified',
           message: 'Route pushed without contract identity',
         ),
@@ -29,7 +29,7 @@ void main() {
       expect(notifications, 1);
 
       expect(() => bus.violations.add(
-            const ZfaContractViolation(code: 'x', message: 'y'),
+            ZfaContractViolation(code: 'x', message: 'y'),
           ), throwsUnsupportedError,
           reason: 'the violation history must be unmodifiable');
 

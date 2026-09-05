@@ -1,4 +1,37 @@
-# Flutter ShadcnUI
+# Zuraffa UI
+
+> `zuraffa_ui` — the skin lane's certified vocabulary: identified Zfa
+> components + `ZuraffaApp`, repackaged end to end from the
+> [`shadcn_ui`](https://github.com/nank1ro/flutter-shadcn-ui) Flutter port
+> (fork of nank1ro/flutter-shadcn-ui at `shadcn_ui` 0.56.3, base fork SHA
+> `afc95690e53629324ddbf094ca78021f56848bd4`).
+
+## Skin lane usage (certified surface)
+
+```yaml
+dependencies:
+  zuraffa_ui: ^0.1.0
+```
+
+```dart
+import 'package:zuraffa_ui/zuraffa_ui.dart';
+
+ZuraffaApp(
+  theme: ZfaThemeData(brightness: Brightness.dark),
+  home: const SkinShell(),
+)
+```
+
+`ZfaButton`, `ZfaInput`, `ZfaCard`, `ZfaSheet`, `ZfaDialog`, `ZfaToaster` each
+carry the typed contract protocol (`contractId` / `contractEnabled`), so
+runtime contract auditors, xray decks and slice manifests can identify them
+without grepping. Raw `Shad*` engine names are internal — reachable through
+`package:zuraffa_ui/shad.dart`, never the package barrel.
+
+## Engine (upstream lineage)
+
+Everything below documents the engine underneath — the full shadcn/ui port
+component set — and the upstream project it tracks.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://github.com/nank1ro/flutter-shadcn-ui/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/nank1ro/flutter-shadcn-ui)](https://gitHub.com/nank1ro/flutter-shadcn-ui/stargazers/)
@@ -11,8 +44,7 @@
 
 <a href="https://www.buymeacoffee.com/nank1ro" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
-Shadcn UI ported in Flutter.
-Awesome UI components for Flutter, fully customizable.
+The engine: shadcn/ui ported in Flutter. Awesome UI components, fully customizable — carried over unchanged (apart from the package rename) from the upstream fork.
 
 ## Documentation
 

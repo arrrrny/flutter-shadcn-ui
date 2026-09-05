@@ -84,7 +84,7 @@ void main() {
       expect(find.textContaining('Zfa contract violation'), findsNothing);
 
       bus.report(
-        const ZfaContractViolation(
+        ZfaContractViolation(
           code: 'route.unidentified',
           message: 'Route pushed without contract identity',
         ),
@@ -112,7 +112,7 @@ void main() {
         ),
       );
       bus.report(
-        const ZfaContractViolation(
+        ZfaContractViolation(
           code: 'route.unidentified',
           message: 'invisible violation',
         ),
